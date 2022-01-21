@@ -12,7 +12,7 @@ require('./config/cors')(app);
 require('./routes/personRoutes')(app);
 require('./routes/versionRoutes')(app, config);
 
-app.listen(3000, () => {
+app.listen(3001, () => {
   /* eslint-disable */
   console.log('Server is up!');
 });

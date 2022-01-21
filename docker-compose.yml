@@ -13,9 +13,9 @@ services:
       - mongo
     links:
       - mongo
-    volumes:
-      - .:/src/app
-      - ./node_modules:/src/app/node_modules
+    #volumes:
+      #- .:/src/app
+      #- ./node_modules:/src/app/node_modules
     networks:
       - default
       - proxy
