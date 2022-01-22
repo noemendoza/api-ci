@@ -44,6 +44,10 @@ jobs:
           command: |
             docker network create proxy
       - run:
+          name: Up docker compose
+          command: |
+            docker-compose up -d
+      - run:
           name: Get docker name
           command: |
             docker-compose ps
@@ -52,7 +56,7 @@ jobs:
           name: Start container and verify it's working
           command: |
             set -x
-            docker-compose up -d
+
             docker run --network container:api \
               appropriate/curl --retry 10 --retry-delay 1 --retry-connrefused http://localhost:3001/api/version
 
