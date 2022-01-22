@@ -1,5 +1,9 @@
 FROM node:dubnium
 
+#Update container
+RUN apt-get update && apt-get install -y \
+  curl
+
 #Create app directory
 ENV APP_DIR=/src/app
 
