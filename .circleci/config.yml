@@ -3,7 +3,6 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:10.24.1
-      - image: circleci/classic:edge
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
@@ -30,7 +29,11 @@ jobs:
 
       # run tests!
       #- run: yarn test
-
+ 
+  test:
+    docker:
+      - image: circleci/classic:edge
+             working_directory: ~/repo
       - run:
           name: Install Docker client
           command: |
