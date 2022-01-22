@@ -43,6 +43,10 @@ jobs:
           name: Creating Network
           command: |
             docker network create proxy
+      - run:
+          name: Get docker name
+          command: |
+            docker-compose ps
 
       - run:
           name: Start container and verify it's working
