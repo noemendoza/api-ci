@@ -33,7 +33,7 @@ jobs:
   test:
     docker:
       - image: circleci/classic:edge
-             working_directory: ~/repo
+         # working_directory: ~/repo
       - run:
           name: Install Docker client
           command: |
