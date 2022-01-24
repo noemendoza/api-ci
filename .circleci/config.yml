@@ -1,12 +1,8 @@
 jobs:
   build:
     docker:
-      # specify the version you desire here
+
       - image: circleci/node:10.24.1
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
 
     working_directory: ~/repo
 
@@ -89,5 +85,7 @@ workflows:
     jobs:
       - build
       - test_docker:
+          type: 
+            - approval
           requires:
             - build
