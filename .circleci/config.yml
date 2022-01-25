@@ -26,7 +26,7 @@ jobs:
  
   make_build_docker:
     docker:
-      - image: circleci/node:10.24.1
+      - image: circleci/cci-demo-docker-primary:0.0.2
 
     working_directory: ~/repo
 
