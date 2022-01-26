@@ -98,10 +98,11 @@ jobs:
       image: ubuntu-1604:202004-01
     steps:
       - run:
-          name: Install OpenVPN
+          name: Install OpenFortiVPN
           command: |
             sudo apt-get update -y 
             sudo apt install openfortivpn -y
+            
 
       - run:
           name: Check IP before VPN connection
@@ -118,8 +119,8 @@ workflows:
       #     requires:
       #       - build
       - deploy_to_server:
-          requires:
-            - build
+      #    requires:
+      #      - build
       #- deploy_testing:
       #    type: 
       #      - approval
