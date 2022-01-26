@@ -1,3 +1,6 @@
+
+
+
 jobs:
   build:
     docker:
@@ -93,6 +96,20 @@ jobs:
       # run tests!
       #- run: yarn test
  
+    deploy_to_server:
+    machine:
+      image: ubuntu-1604:202004-01
+    steps:
+      - run:
+          name: Install OpenVPN
+          command: |
+            sudo apt-get update
+            sudo apt install openfortivpn -y
+
+      - run:
+          name: Check IP before VPN connection
+          command: |
+            openfortivpn ${VAR_PRIVATE_VPN_IP} -u ${VAR_PRIVATE_VPN_USER} --trusted-cert 1316d13a7122725ecc1d555895053bd1ae8b0c2159e04a1c7c39e4bfb72cbfae -p ${VAR_PRIVATE_VPN_PASSWORD}
 
  
 workflows:
@@ -101,6 +118,9 @@ workflows:
     jobs:
       - build
       - make_build_docker:
+          requires:
+            - build
+      - deploy_to_server:
           requires:
             - build
       #- deploy_testing:
