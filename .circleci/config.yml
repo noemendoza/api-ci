@@ -118,7 +118,7 @@ workflows:
       # - make_build_docker:
       #     requires:
       #       - build
-      - deploy_to_server:
+      - deploy_to_server
       #    requires:
       #      - build
       #- deploy_testing:
