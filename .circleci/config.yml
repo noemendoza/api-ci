@@ -96,7 +96,7 @@ jobs:
       # run tests!
       #- run: yarn test
  
-    deploy_to_server:
+  deploy_to_server:
     machine:
       image: ubuntu-1604:202004-01
     steps:
