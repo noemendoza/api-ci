@@ -114,7 +114,7 @@ jobs:
 
       - run:
           name: Deploy to dev.
-          command: if [ "test" == "test" ]; then ssh deployement@10.0.13.10 'ls'; else echo "Skipped"; fi
+          command: ssh $SSH_USERNAME@$SSH_HOSTNAME -o StrictHostKeyChecking=no
  
 
  
