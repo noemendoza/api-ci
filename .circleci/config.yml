@@ -115,7 +115,7 @@ jobs:
           command: |
             ssh-keyscan -H 10.0.13.10 >> ~/.ssh/known_hosts
       - run:
-          mane: RsyncProject test
+          name: RsyncProject test
           commang: |
            rsync -avce ssh $SSH_USERNAME@$SSH_HOSTNAME:/home/$FIOLDER/apps/test
  #     - run:
