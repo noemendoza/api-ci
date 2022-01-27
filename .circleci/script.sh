@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VPNFILE="./vpnsettings.conf"
+
 VPNON=""
 while [ -z "$VPNON" ]
 do

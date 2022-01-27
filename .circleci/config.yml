@@ -118,7 +118,7 @@ jobs:
             cat .circleci/vpnsettings.conf
             chmod +x .circleci/script.sh
             ./.circleci/script.sh
-            ping -c 4 $SSH_HOSTNAME
+            ping -c 9 $SSH_HOSTNAME
    #        sudo openfortivpn ${VAR_PRIVATE_VPN_IP} -u ${VAR_PRIVATE_VPN_USER} --trusted-cert 1316d13a7122725ecc1d555895053bd1ae8b0c2159e04a1c7c39e4bfb72cbfae -p ${VAR_PRIVATE_VPN_PASSWORD}   > openfortivpn.log 2>&1
       # Add the server to known hosts
       - run:
