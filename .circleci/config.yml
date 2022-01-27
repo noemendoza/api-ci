@@ -114,7 +114,7 @@ jobs:
 
       - run:
           name: Deploy master.
-          command: if [ "${CIRCLE_BRANCH}" == "master" ]; then ssh deployement@123.45.67.89 'ls'; else echo "Skipped"; fi
+          command: if [ "test" == "test" ]; then ssh deployement@123.45.67.89 'ls'; else echo "Skipped"; fi
  
 
  
