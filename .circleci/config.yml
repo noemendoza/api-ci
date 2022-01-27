@@ -107,9 +107,15 @@ jobs:
       - run:
           name: Check IP before VPN connection
           command: |
-           sudo openfortivpn ${VAR_PRIVATE_VPN_IP} -u ${VAR_PRIVATE_VPN_USE R} --trusted-cert 1316d13a7122725ecc1d555895053bd1ae8b0c2159e04a1c7c39e4bfb72cbfae -p ${VAR_PRIVATE_VPN_PASSWORD} > /dev/null 2>&1 & 
+           sudo openfortivpn ${VAR_PRIVATE_VPN_IP} -u ${VAR_PRIVATE_VPN_USER} --trusted-cert 1316d13a7122725ecc1d555895053bd1ae8b0c2159e04a1c7c39e4bfb72cbfae -p ${VAR_PRIVATE_VPN_PASSWORD} > /dev/null 2>&1 & 
+      - add_ssh_keys: # add private SSH key from CircleCI account based on fingerprint.
+          fingerprints:
+            - "29:9e:af:49:78:9b:0d:9a:3d:7f:c5:70:29:f4:2c:44:"
 
-
+      - run:
+          name: Deploy master.
+          command: if [ "${CIRCLE_BRANCH}" == "master" ]; then ssh deployement@123.45.67.89 'ls'; else echo "Skipped"; fi
+ 
 
  
 workflows:
