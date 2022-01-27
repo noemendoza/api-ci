@@ -113,8 +113,8 @@ jobs:
             - "29:9e:af:49:78:9b:0d:9a:3d:7f:c5:70:29:f4:2c:44:"
 
       - run:
-          name: Deploy master.
-          command: if [ "test" == "test" ]; then ssh deployement@123.45.67.89 'ls'; else echo "Skipped"; fi
+          name: Deploy to dev.
+          command: if [ "test" == "test" ]; then ssh deployement@10.0.13.10 'ls'; else echo "Skipped"; fi
  
 
  
