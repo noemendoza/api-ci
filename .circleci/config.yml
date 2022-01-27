@@ -110,11 +110,11 @@ jobs:
            sudo openfortivpn ${VAR_PRIVATE_VPN_IP} -u ${VAR_PRIVATE_VPN_USER} --trusted-cert 1316d13a7122725ecc1d555895053bd1ae8b0c2159e04a1c7c39e4bfb72cbfae -p ${VAR_PRIVATE_VPN_PASSWORD} > /dev/null 2>&1 & 
       - add_ssh_keys: # add private SSH key from CircleCI account based on fingerprint.
           fingerprints:
-            - "29:9e:af:49:78:9b:0d:9a:3d:7f:c5:70:29:f4:2c:44:"
+            - "19:2c:69:34:45:b8:46:45:ff:3e:93:e3:44:93:bf:8d"
 
       - run:
           name: Deploy to dev.
-          command: ssh $SSH_USERNAME@$SSH_HOSTNAME -o StrictHostKeyChecking=no
+          command: ssh $SSH_USERNAME@$SSH_HOSTNAME -o StrictHostKeyChecking=no "ls"
  
 
 
