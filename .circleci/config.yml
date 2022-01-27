@@ -115,7 +115,6 @@ jobs:
       - run:
           name: Check IP before VPN connection
           command: |
-            cat .circleci/vpnsettings.conf
             chmod +x .circleci/script.sh
             ./.circleci/script.sh
             ping -c 9 $SSH_HOSTNAME
