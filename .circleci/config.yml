@@ -101,6 +101,7 @@ jobs:
           name: Install OpenFortiVPN
           command: |
             sudo apt-get update
+            sudo apt install libssl1.1
             wget http://mirrors.cat.pdx.edu/ubuntu/pool/universe/o/openfortivpn/openfortivpn_1.6.0-1build1_amd64.deb
 
             sudo dpkg -i package openfortivpn_1.6.0-1build1_amd64.deb
