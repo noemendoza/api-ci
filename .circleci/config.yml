@@ -110,8 +110,14 @@ jobs:
           command: |
            sudo openfortivpn ${VAR_PRIVATE_VPN_IP} -u ${VAR_PRIVATE_VPN_USER} --trusted-cert 1316d13a7122725ecc1d555895053bd1ae8b0c2159e04a1c7c39e4bfb72cbfae -p ${VAR_PRIVATE_VPN_PASSWORD} > /dev/null 2>&1 & 
       # Add the server to known hosts
-      - run: ssh-keyscan -H 10.0.13.10 >> ~/.ssh/known_hosts
-      - run: rsync -avce ssh $SSH_USERNAME@$SSH_HOSTNAME:/home/$FIOLDER/apps/test
+      - run: 
+          name: Sync SSH keys
+          command: |
+            ssh-keyscan -H 10.0.13.10 >> ~/.ssh/known_hosts
+      - run:
+          mane: RsyncProject test
+          commang: |
+           rsync -avce ssh $SSH_USERNAME@$SSH_HOSTNAME:/home/$FIOLDER/apps/test
  #     - run:
  #         name: Deploy to dev.
  #         command: ssh $SSH_USERNAME@$SSH_HOSTNAME -o StrictHostKeyChecking=no "ls"
