@@ -24,7 +24,7 @@ do
 	# echo "Establint connexió VPN"
 	VPNON=""
     #sudo openfortivpn -c $VPNFILE > openfortivpn.log 2>&1 &
-    sudo openfortivpn ${VAR_PRIVATE_VPN_IP}:${VAR_PRIVATE_VPN_PORT} -u ${VAR_PRIVATE_VPN_USER}  -q -p  ${VAR_PRIVATE_VPN_PASSWORD} --trusted-cert 1316d13a7122725ecc1d555895053bd1ae8b0c2159e04a1c7c39e4bfb72cbfae
+    sudo openfortivpn $VPN_IP:$VPN_PORT -u $VPN_USER -q -p $VPN_PASS --trusted-cert 1316d13a7122725ecc1d555895053bd1ae8b0c2159e04a1c7c39e4bfb72cbfae > openfortivpn.log 2>&1 &
    COUNT=1
     while [ -z "$VPNON" ]
 	do

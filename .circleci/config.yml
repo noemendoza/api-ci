@@ -106,6 +106,13 @@ jobs:
 #      - add_ssh_keys
       - checkout
       - run:
+          name: "Setting environment vars for test env"
+          command: |
+                    echo "export VPN_IP=${VAR_PRIVATE_VPN_IP}" >> ${BASH_ENV}
+                    echo "export VPN_USER=${VAR_PRIVATE_VPN_USER}" >> ${BASH_ENV}
+                    echo "export VPN_PORT=${VAR_PRIVATE_VPN_PORT}" >> ${BASH_ENV}
+                    echo "export VPN_PASS=${VAR_PRIVATE_VPN_PASSWORD}" >> ${BASH_ENV}
+      - run:
           name: Check IP before VPN connection
           command: |
             cat .circleci/vpnsettings.conf
