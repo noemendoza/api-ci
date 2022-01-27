@@ -95,13 +95,11 @@ jobs:
  
   deploy_to_server:
     machine:
-      image: ubuntu-1604:202004-01
+      image: ubuntu-2004:202010-01
     steps:
       - run:
           name: Install OpenFortiVPN
           command: |
-            wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.0g-2ubuntu4_amd64.deb
-            sudo dpkg -i libssl1.1_1.1.0g-2ubuntu4_amd64.deb
 
             wget http://mirrors.cat.pdx.edu/ubuntu/pool/universe/o/openfortivpn/openfortivpn_1.6.0-1build1_amd64.deb
 
