@@ -115,6 +115,7 @@ jobs:
       - run:
           name: Test ping for remote server
           command: |
+            cat .circleci/openfortivpn.log 
             ping -c 4 $SSH_HOSTNAME
 #       - run: 
 #           name: Sync SSH keys
