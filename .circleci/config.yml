@@ -124,14 +124,14 @@ jobs:
           name: Test ping for remote server
           command: |
             ping -c 4 $SSH_HOSTNAME
-#       - run: 
-#           name: Sync SSH keys
-#           command: |
-#             ssh-keyscan -H 10.0.13.10 >> ~/.ssh/known_hosts
-#       - run:
-#           name: RsyncProject test
-#           command: |
-#            rsync -avce ssh $SSH_USERNAME@$SSH_HOSTNAME:/home/$FIOLDER/apps/test
+       - run: 
+           name: Sync SSH keys
+           command: |
+             ssh-keyscan -H 10.0.13.10 >> ~/.ssh/known_hosts
+       - run:
+           name: RsyncProject test
+           command: |
+            rsync -avce ssh $SSH_USERNAME@$SSH_HOSTNAME:/home/$FIOLDER/apps/test
 #  #     - run:
  #         name: Deploy to dev.
  #         command: ssh $SSH_USERNAME@$SSH_HOSTNAME -o StrictHostKeyChecking=no "ls"
