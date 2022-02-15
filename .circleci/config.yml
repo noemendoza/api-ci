@@ -102,20 +102,42 @@ jobs:
           command: |
             sudo apt-get update
             sudo apt install openfortivpn -y
-            
-
+ #     - run: sudo apt-get install rsync
+#      - add_ssh_keys
+      - checkout
+      - run:
+          name: "Setting environment vars for test env"
+          command: |
+                    echo "export VPN_IP=${VAR_PRIVATE_VPN_IP}" >> ${BASH_ENV}
+                    echo "export VPN_USER=${VAR_PRIVATE_VPN_USER}" >> ${BASH_ENV}
+                    echo "export VPN_PORT=${VAR_PRIVATE_VPN_PORT}" >> ${BASH_ENV}
+                    echo "export VPN_PASS=${VAR_PRIVATE_VPN_PASSWORD}" >> ${BASH_ENV}
       - run:
           name: Check IP before VPN connection
           command: |
-           sudo openfortivpn ${VAR_PRIVATE_VPN_IP} -u ${VAR_PRIVATE_VPN_USER} --trusted-cert 1316d13a7122725ecc1d555895053bd1ae8b0c2159e04a1c7c39e4bfb72cbfae -p ${VAR_PRIVATE_VPN_PASSWORD} > /dev/null 2>&1 & 
-      - add_ssh_keys: # add private SSH key from CircleCI account based on fingerprint.
-          fingerprints:
-            - "29:9e:af:49:78:9b:0d:9a:3d:7f:c5:70:29:f4:2c:44:"
-
+            chmod +x .circleci/script.sh
+            ./.circleci/script.sh
+            ping -c 9 $SSH_HOSTNAME
+   #        sudo openfortivpn ${VAR_PRIVATE_VPN_IP} -u ${VAR_PRIVATE_VPN_USER} --trusted-cert 1316d13a7122725ecc1d555895053bd1ae8b0c2159e04a1c7c39e4bfb72cbfae -p ${VAR_PRIVATE_VPN_PASSWORD}   > openfortivpn.log 2>&1
+      # Add the server to known hosts
       - run:
-          name: Deploy to dev.
-          command: if [ "test" == "test" ]; then ssh deployement@10.0.13.10 'ls'; else echo "Skipped"; fi
+          name: Test ping for remote server
+          command: |
+            ping -c 4 $SSH_HOSTNAME
+      - run: 
+          name: Sync SSH keys
+          command: |
+            ssh-keyscan -H 10.0.13.10 >> ~/.ssh/known_hosts
+      - run:
+          name: RsyncProject test
+          command: |
+           rsync -avce ssh $SSH_USERNAME@$SSH_HOSTNAME:/home/$FIOLDER/apps/test
+#  #     - run:
+ #         name: Deploy to dev.
+ #         command: ssh $SSH_USERNAME@$SSH_HOSTNAME -o StrictHostKeyChecking=no "ls"
  
+
+
 
  
 workflows:
